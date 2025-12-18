@@ -9,7 +9,70 @@ const products = [
         description: "A staple for any wardrobe. Made from 100% organic cotton, this tee offers a relaxed fit and breathable comfort.",
         isBestSeller: true
     },
-   
+    {
+        id: 2,
+        name: "Structured Wool Coat",
+        category: "women",
+        price: 250,
+        image: "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        description: "Elegant and warm, this wool coat features a tailored silhouette perfect for the modern woman.",
+        isBestSeller: true
+    },
+    {
+        id: 3,
+        name: "Essential Wool Cap",
+        category: "essentials",
+        price: 120,
+        image: "https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        description: "Soft knitted wool cap designed for everyday comfort. Keeps you warm while adding a minimal, modern style to any outfit.",
+        isBestSeller: false
+    },
+    {
+        id: 4,
+        name: "Slim Fit Chinos",
+        category: "men",
+        price: 85,
+        image: "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        description: "Perfectly tailored chinos for a smart-casual look. Available in neutral tones.",
+        isBestSeller: false
+    },
+    {
+        id: 5,
+        name: "Silk Blouse",
+        category: "women",
+        price: 110,
+        image: "https://images.unsplash.com/photo-1564257631407-4deb1f99d992?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        description: "Luxurious silk blouse that adds a touch of sophistication to any outfit.",
+        isBestSeller: true
+    },
+    {
+        id: 6,
+        name: "Leather Weekend Bag",
+        category: "essentials",
+        price: 320,
+        image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        description: "Handcrafted leather bag, spacious enough for all your weekend getaway essentials.",
+        isBestSeller: true
+    },
+    {
+        id: 7,
+        name: "Cashmere Sweater",
+        category: "women",
+        price: 180,
+        image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        description: "Soft, warm, and incredibly comfortable. The ultimate luxury essential.",
+        isBestSeller: false
+    },
+    {
+        id: 8,
+        name: "Oxford Shirt",
+        category: "men",
+        price: 75,
+        image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        description: "Crisp white oxford shirt. A timeless classic for professional and casual wear.",
+        isBestSeller: false
+    }
+];
 
 // State
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
