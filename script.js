@@ -125,7 +125,68 @@ function renderProductCard(product) {
     `;
 }
 
+function renderBestSellers() {
+    const bestSellers = products.filter(p => p.isBestSeller).slice(0, 4);
+    bestSellersGrid.innerHTML = bestSellers.map(renderProductCard).join('');
+}
 
+function renderShopProducts(filteredProducts = products) {
+    productGrid.innerHTML = filteredProducts.map(renderProductCard).join('');
+}
+
+// Shop Filters
+function setupFilters() {
+    const categoryInputs = document.querySelectorAll('input[name="category"]');
+    const priceInputs = document.querySelectorAll('input[name="price"]');
+
+    function filterProducts() {
+        const selectedCategories = Array.from(categoryInputs)
+            .filter(input => input.checked)
+            .map(input => input.value);
+
+        const selectedPrices = Array.from(priceInputs)
+            .filter(input => input.checked)
+            .map(input => input.value);
+
+        let filtered = products;
+
+        if (selectedCategories.length > 0) {
+            filtered = filtered.filter(p => selectedCategories.includes(p.category));
+        }
+
+        if (selectedPrices.length > 0) {
+            filtered = filtered.filter(p => {
+                return selectedPrices.some(range => {
+                    const [min, max] = range.split('-').map(Number);
+                    if (max) return p.price >= min && p.price <= max;
+                    return p.price >= min; // For "200+"
+                });
+            });
+        }
+
+        renderShopProducts(filtered);
+    }
+
+    categoryInputs.forEach(input => input.addEventListener('change', filterProducts));
+    priceInputs.forEach(input => input.addEventListener('change', filterProducts));
+}
+
+// Product Detail Page
+function renderProductDetail() {
+    const params = new URLSearchParams(window.location.search);
+    const productId = parseInt(params.get('id'));
+    const product = products.find(p => p.id === productId);
+
+    if (!product) {
+        document.getElementById('product-detail-container').innerHTML = '<p>Product not found.</p>';
+        return;
+    }
+
+    // Update DOM
+    document.getElementById('main-image').src = product.image;
+    document.getElementById('product-name').textContent = product.name;
+    document.getElementById('product-price').textContent = `$${product.price}`;
+    document.getElementById('product-description').textContent = product.description;
 
     // Update Thumbnails (using main image for now as we don't have multiple images in data)
     const thumbnails = document.querySelectorAll('.thumbnail');
