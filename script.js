@@ -82,7 +82,30 @@ const productGrid = document.getElementById('product-grid');
 const bestSellersGrid = document.getElementById('best-sellers-grid');
 const cartCount = document.querySelector('.cart-count');
 
-/
+// Initialization
+document.addEventListener('DOMContentLoaded', () => {
+    updateCartCount();
+
+    if (bestSellersGrid) {
+        renderBestSellers();
+    }
+
+    if (productGrid) {
+        renderShopProducts();
+        setupFilters();
+    }
+
+    if (document.getElementById('product-detail-container')) {
+        renderProductDetail();
+    }
+
+    if (document.getElementById('contact-form')) {
+        setupContactForm();
+    }
+
+    if (document.getElementById('cart-content')) {
+        renderCartPage();
+    }
 });
 
 // Render Functions
